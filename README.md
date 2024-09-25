@@ -134,8 +134,7 @@ assign Y = (S1 == 0 && S0 == 0) ? a :
 endmodule
 
 #Output:
-![structural imp mux](https://github.com/user-attachments/assets/f2e6395c-2fb9-460a-9035-0bfefd863bc5)
-
+![structural imp mux](https://github.com/user-attachments/assets/a5f45dd1-b311-425a-b2f2-6ce112007550)
 
 Testbench Implementation
 
