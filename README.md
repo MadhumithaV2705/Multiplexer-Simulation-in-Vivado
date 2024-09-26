@@ -138,37 +138,31 @@ endmodule
 
 Testbench Implementation
 
-// mux4_to_1_tb.v
-`timescale 1ns / 1ps
-
-module mux4_to_1_tb;
-    // Inputs
+module mux4to1tb;
     reg A;
     reg B;
     reg C;
     reg D;
     reg S0;
     reg S1;
-
-    // Outputs
     wire Y_gate;
     wire Y_dataflow;
     wire Y_behavioral;
     wire Y_structural;
 
     // Instantiate the Gate-Level MUX
-    mux4_to_1_gate uut_gate (
-        .A(A),
-        .B(B),
-        .C(C),
-        .D(D),
-        .S0(S0),
-        .S1(S1),
-        .Y(Y_gate)
+    mux4to1g uut_gate (
+        .a(A),
+        .b(B),
+        .c(C),
+        .d(D),
+        .s0(S0),
+        .s1(S1),
+        .y(Y_gate)
     );
 
     // Instantiate the Data Flow MUX
-    mux4_to_1_dataflow uut_dataflow (
+    mux4to1d uut_dataflow (
         .A(A),
         .B(B),
         .C(C),
@@ -179,18 +173,18 @@ module mux4_to_1_tb;
     );
 
     // Instantiate the Behavioral MUX
-    mux4_to_1_behavioral uut_behavioral (
-        .A(A),
-        .B(B),
-        .C(C),
-        .D(D),
-        .S0(S0),
-        .S1(S1),
-        .Y(Y_behavioral)
+    mux4to1 uut_behavioral (
+        .i0(A),
+        .i1(B),
+        .i2(C),
+        .i3(D),
+        .s0(S0),
+        .s1(S1),
+        .y(Y_behavioral)
     );
 
     // Instantiate the Structural MUX
-    mux4_to_1_structural uut_structural (
+    mux4to1s uut_structural (
         .A(A),
         .B(B),
         .C(C),
@@ -199,12 +193,8 @@ module mux4_to_1_tb;
         .S1(S1),
         .Y(Y_structural)
     );
-
-    // Test vectors
     initial begin
-        // Initialize Inputs
         A = 0; B = 0; C = 0; D = 0; S0 = 0; S1 = 0;
-
         // Apply test cases
         #10 {S1, S0, A, B, C, D} = 6'b00_0000; // Y = A = 0
         #10 {S1, S0, A, B, C, D} = 6'b00_0001; // Y = A = 1
@@ -217,8 +207,6 @@ module mux4_to_1_tb;
         #10 {S1, S0, A, B, C, D} = 6'b00_1111; // Y = A = 1
         #10 $stop;
     end
-
-    // Monitor the outputs
     initial begin
         $monitor("Time=%0t | S1=%b S0=%b | Inputs: A=%b B=%b C=%b D=%b | Y_gate=%b | Y_dataflow=%b | Y_behavioral=%b | Y_structural=%b",
                  $time, S1, S0, A, B, C, D, Y_gate, Y_dataflow, Y_behavioral, Y_structural);
