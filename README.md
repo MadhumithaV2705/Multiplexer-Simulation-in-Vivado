@@ -1,69 +1,30 @@
-SIMULATION AND IMPLEMENTATION OF LOGIC GATES
+SIMULATION AND IMPLEMENTATION OF LOGIC GATES:
 AIM:
 To design and simulate a 4:1 Multiplexer (MUX) using Verilog HDL in four different modeling styles—Gate-Level, Data Flow, Behavioral, and Structural—and to verify its functionality through a testbench using the Vivado 2023.1 simulation environment. The experiment aims to understand how different abstraction levels in Verilog can be used to describe the same digital logic circuit and analyze their performance.
 
 APPARATUS REQUIRED:
 Vivado 2023.1
 
-Procedure
-1. Launch Vivado
-Open Vivado 2023.1 by double-clicking the Vivado icon or searching for it in the Start menu.
-2. Create a New Project
-Click on "Create Project" from the Vivado Quick Start window.
-In the New Project Wizard:
-Project Name: Enter a name for the project (e.g., Mux4_to_1).
-Project Location: Select the folder where the project will be saved.
-Click Next.
-Project Type: Select RTL Project, then click Next.
-Add Sources:
-Click on "Add Files" to add the Verilog files (e.g., mux4_to_1_gate.v, mux4_to_1_dataflow.v, etc.).
-Make sure to check the box "Copy sources into project" to avoid any external file dependencies.
-Click Next.
-Add Constraints: Skip this step by clicking Next (since no constraints are needed for simulation).
-Default Part Selection:
-You can choose a part based on the FPGA board you are using (if any).
-If no board is used, you can choose any part, for example, xc7a35ticsg324-1L (Artix-7).
-Click Next, then Finish.
-3. Add Verilog Source Files
-In the "Sources" window, right-click on "Design Sources" and select Add Sources if you didn't add all files earlier.
-Add the Verilog files (mux4_to_1_gate.v, mux4_to_1_dataflow.v, etc.) and the testbench (mux4_to_1_tb.v).
-4. Check Syntax
-Expand the "Flow Navigator" on the left side of the Vivado interface.
-Under "Synthesis", click "Run Synthesis".
-Vivado will check your design for syntax errors. If any errors or warnings appear, correct them in the respective Verilog files and re-run the synthesis.
-5. Simulate the Design
-In the Flow Navigator, under "Simulation", click on "Run Simulation" → "Run Behavioral Simulation".
-Vivado will open the Simulations Window, and the waveform window will show the signals defined in the testbench.
-6. View and Analyze Simulation Results
-The simulation waveform window will display the signals (S1, S0, A, B, C, D, Y_gate, Y_dataflow, Y_behavioral, Y_structural).
-Use the time markers to verify the correctness of the 4:1 MUX output for each set of inputs.
-You can zoom in/out or scroll through the simulation time using the waveform viewer controls.
-7. Adjust Simulation Time
-To run a longer simulation or adjust timing, go to the Simulation Settings by clicking "Simulation" → "Simulation Settings".
-Under "Simulation", modify the Run Time (e.g., set to 1000ns).
-8. Generate Simulation Report
-Once the simulation is complete, you can generate a simulation report by right-clicking on the simulation results window and selecting "Export Simulation Results".
-Save the report for reference in your lab records.
-9. Save and Document Results
-Save your project by clicking File → Save Project.
-Take screenshots of the waveform window and include them in your lab report to document your results.
-You can include the timing diagram from the simulation window showing the correct functionality of the 4:1 MUX across different select inputs and data inputs.
-10. Close the Simulation
-Once done, close the simulation by going to Simulation → "Close Simulation".
+PROCEDURE:
+Launch Vivado Open Vivado 2023.1 by double-clicking the Vivado icon or searching for it in the Start menu.
+Create a New Project Click on "Create Project" from the Vivado Quick Start window. In the New Project Wizard: Project Name: Enter a name for the project (e.g., Mux4_to_1). Project Location: Select the folder where the project will be saved. Click Next. Project Type: Select RTL Project, then click Next. Add Sources: Click on "Add Files" to add the Verilog files (e.g., mux4_to_1_gate.v, mux4_to_1_dataflow.v, etc.). Make sure to check the box "Copy sources into project" to avoid any external file dependencies. Click Next. Add Constraints: Skip this step by clicking Next (since no constraints are needed for simulation). Default Part Selection: You can choose a part based on the FPGA board you are using (if any). If no board is used, you can choose any part, for example, xc7a35ticsg324-1L (Artix-7). Click Next, then Finish.
+Add Verilog Source Files In the "Sources" window, right-click on "Design Sources" and select Add Sources if you didn't add all files earlier. Add the Verilog files (mux4_to_1_gate.v, mux4_to_1_dataflow.v, etc.) and the testbench (mux4_to_1_tb.v).
+Check Syntax Expand the "Flow Navigator" on the left side of the Vivado interface. Under "Synthesis", click "Run Synthesis". Vivado will check your design for syntax errors. If any errors or warnings appear, correct them in the respective Verilog files and re-run the synthesis.
+Simulate the Design In the Flow Navigator, under "Simulation", click on "Run Simulation" → "Run Behavioral Simulation". Vivado will open the Simulations Window, and the waveform window will show the signals defined in the testbench.
+View and Analyze Simulation Results The simulation waveform window will display the signals (S1, S0, A, B, C, D, Y_gate, Y_dataflow, Y_behavioral, Y_structural). Use the time markers to verify the correctness of the 4:1 MUX output for each set of inputs. You can zoom in/out or scroll through the simulation time using the waveform viewer controls.
+Adjust Simulation Time To run a longer simulation or adjust timing, go to the Simulation Settings by clicking "Simulation" → "Simulation Settings". Under "Simulation", modify the Run Time (e.g., set to 1000ns).
+Generate Simulation Report Once the simulation is complete, you can generate a simulation report by right-clicking on the simulation results window and selecting "Export Simulation Results". Save the report for reference in your lab records.
+Save and Document Results Save your project by clicking File → Save Project. Take screenshots of the waveform window and include them in your lab report to document your results. You can include the timing diagram from the simulation window showing the correct functionality of the 4:1 MUX across different select inputs and data inputs.
+Close the Simulation Once done, close the simulation by going to Simulation → "Close Simulation".
+LOGIC DIAGRAM:
+![image](https://github.com/user-attachments/assets/d10762e7-f43d-4b4d-ace7-fb73d30ed655)
 
-Logic Diagram
+TRUTH TABLE:
+![image](https://github.com/user-attachments/assets/28d99391-bba4-43f2-aaa3-4696e7b50a49)
 
-![image](https://github.com/user-attachments/assets/d4ab4bc3-12b0-44dc-8edb-9d586d8ba856)
-
-Truth Table
-
-![image](https://github.com/user-attachments/assets/c850506c-3f6e-4d6b-8574-939a914b2a5f)
-
-Verilog Code
-
-4:1 MUX Gate-Level Implementation
-
-module mux4_to_1(s1,s0,a,b,c,d,y);
+VERILOG CODE:
+4:1 MUX GATE LEVEL IMPLEMENTATION:
+ module multiplexer(s1,s0,a,b,c,d,y);
 input s1,s0,a,b,c,d;
 output y;
 wire[3:0]w;
@@ -73,56 +34,45 @@ and g3(w[2],s1,~s0,c);
 and g4(w[3],s1,s0,d);
 or g5(y,w[0],w[1],w[2],w[3]);
 endmodule
+OUTPUT:
+![image](https://github.com/user-attachments/assets/4315f9cd-1422-4f1e-a9fd-8c0afb94c701)
 
-#Output:
-![gate level imp mux](https://github.com/user-attachments/assets/94ff81d9-85a6-43a9-94db-3d316f84ae28)
+4:1 MUX DATA FLOW IMPLEMENTATION:
 
-4:1 MUX Data Flow Implementation
-
-// mux4_to_1_dataflow.v
-module mux4_to_1_dataflow (
-    input wire A,
-    input wire B,
-    input wire C,
-    input wire D,
-    input wire S0,
-    input wire S1,
-    output wire Y
-);
-    assign Y = (~S1 & ~S0 & A) |
-               (~S1 & S0 & B) |
-               (S1 & ~S0 & C) |
-               (S1 & S0 & D);
+module mul_data( Y,I0,I1,I2,I3,S0,S1);
+output Y;       
+input I0, I1, I2, I3;
+input S0, S1;     
+assign Y = (~S1 & ~S0 & I0) |  
+          (~S1 & S0 & I1)  |  
+           (S1 & ~S0 & I2)  |  
+           (S1 & S0 & I3);
 endmodule
 
-#Output:
-![data flow imp mux](https://github.com/user-attachments/assets/007f9dfe-69f6-4889-8914-af214e443bda)
+OUTPUT:
+![image](https://github.com/user-attachments/assets/9fd618b4-1a5b-4705-9b68-8f861ac66fcd)
 
-
-4:1 MUX Behavioral Implementation
-
-module mux4_to_1(s, i, y);
-    input [1:0] s;
-    input [3:0] i;
-    output reg y;
-    always @(s or i)
-    begin
-    case (s)
-            2'b00: y = i[0];
-            2'b01: y = i[1];
-            2'b10: y = i[2];
-            2'b11: y = i[3];
-            default: y = 1'b0;
-        endcase
-    end
+4:1 MUX BEHAVIOURAL IMPLEMENTATION:
+module mux(s, i, y);
+input [1:0] s;
+input [3:0] i;
+output reg y;  
+always @(s or i)  
+begin
+ case (s)
+        2'b00: y = i[0];  
+        2'b01: y = i[1];   
+        2'b10: y = i[2];
+        2'b11: y = i[3];  
+        default: y = 1'b0;
+    endcase
+end
 endmodule
 
-#Output:
-![behavioural imp mux](https://github.com/user-attachments/assets/a50962cc-4d9b-404a-93fd-6303033f3c88)
+OUTPUT:
+![image](https://github.com/user-attachments/assets/618c383e-b046-4c26-aac8-c9cd92657106)
 
-
-4:1 MUX Structural Implementation
-
+4:1 MUX STRUCTURAL IMPLEMENTATION:
 module mux_4to1 (a,b,c,d,S0,S1,Y);
 input a,b,c,d;
 input  S0, S1;       
@@ -132,100 +82,46 @@ assign Y = (S1 == 0 && S0 == 0) ? a :
 (S1 == 1 && S0 == 0) ? c :
 (S1 == 1 && S0 == 1) ? d:
 endmodule
+OUTPUT:
+![image](https://github.com/user-attachments/assets/7b7c4de8-7362-42b5-81ec-91a6e04a3b0b)
 
-#Output:
-![structural imp mux](https://github.com/user-attachments/assets/a5f45dd1-b311-425a-b2f2-6ce112007550)
+TESTBENCH IMPLEMENTATION:
+module multiplexer_tb;
+ // Declare inputs as reg and outputs as wire
+ reg s1, s0, a, b, c, d;
+ wire y;
 
-Testbench Implementation
+ // Instantiate the multiplexer module
+ multiplexer uut (
+   .s1(s1), 
+   .s0(s0), 
+   .a(a), 
+   .b(b), 
+   .c(c), 
+   .d(d), 
+   .y(y)
+ );
 
-module mux4to1tb;
-    reg A;
-    reg B;
-    reg C;
-    reg D;
-    reg S0;
-    reg S1;
-    wire Y_gate;
-    wire Y_dataflow;
-    wire Y_behavioral;
-    wire Y_structural;
-
-    // Instantiate the Gate-Level MUX
-    mux4to1g uut_gate (
-        .a(A),
-        .b(B),
-        .c(C),
-        .d(D),
-        .s0(S0),
-        .s1(S1),
-        .y(Y_gate)
-    );
-
-    // Instantiate the Data Flow MUX
-    mux4to1d uut_dataflow (
-        .A(A),
-        .B(B),
-        .C(C),
-        .D(D),
-        .S0(S0),
-        .S1(S1),
-        .Y(Y_dataflow)
-    );
-
-    // Instantiate the Behavioral MUX
-    mux4to1 uut_behavioral (
-        .i0(A),
-        .i1(B),
-        .i2(C),
-        .i3(D),
-        .s0(S0),
-        .s1(S1),
-        .y(Y_behavioral)
-    );
-
-    // Instantiate the Structural MUX
-    mux4to1s uut_structural (
-        .A(A),
-        .B(B),
-        .C(C),
-        .D(D),
-        .S0(S0),
-        .S1(S1),
-        .Y(Y_structural)
-    );
-    initial begin
-        A = 0; B = 0; C = 0; D = 0; S0 = 0; S1 = 0;
-        // Apply test cases
-        #10 {S1, S0, A, B, C, D} = 6'b00_0000; // Y = A = 0
-        #10 {S1, S0, A, B, C, D} = 6'b00_0001; // Y = A = 1
-        #10 {S1, S0, A, B, C, D} = 6'b01_0010; // Y = B = 1
-        #10 {S1, S0, A, B, C, D} = 6'b10_0100; // Y = C = 1
-        #10 {S1, S0, A, B, C, D} = 6'b11_1000; // Y = D = 1
-        #10 {S1, S0, A, B, C, D} = 6'b01_1100; // Y = B = 1
-        #10 {S1, S0, A, B, C, D} = 6'b10_1010; // Y = C = 1
-        #10 {S1, S0, A, B, C, D} = 6'b11_0110; // Y = D = 1
-        #10 {S1, S0, A, B, C, D} = 6'b00_1111; // Y = A = 1
-        #10 $stop;
-    end
-    initial begin
-        $monitor("Time=%0t | S1=%b S0=%b | Inputs: A=%b B=%b C=%b D=%b | Y_gate=%b | Y_dataflow=%b | Y_behavioral=%b | Y_structural=%b",
-                 $time, S1, S0, A, B, C, D, Y_gate, Y_dataflow, Y_behavioral, Y_structural);
-    end
+ // Test cases
+ initial begin
+   // Monitor changes in inputs and output
+   $monitor("s1 = %b, s0 = %b, a = %b, b = %b, c = %b, d = %b, y = %b", s1, s0, a, b, c, d, y);
+   
+   // Apply test vectors
+   s1 = 0; s0 = 0; a = 1; b = 0; c = 0; d = 0; #10;  // Test case 1
+   s1 = 0; s0 = 1; a = 0; b = 1; c = 0; d = 0; #10;  // Test case 2
+   s1 = 1; s0 = 0; a = 0; b = 0; c = 1; d = 0; #10;  // Test case 3
+   s1 = 1; s0 = 1; a = 0; b = 0; c = 0; d = 1; #10;  // Test case 4
+   
+   // Finish simulation
+   $finish;
+ end
 endmodule
 
+OUTPUT:
+![image](https://github.com/user-attachments/assets/8e1cf7e8-2646-49e5-b6a1-ccef2cd26bbe)
 
-Sample Output
-
-Time=0 | S1=0 S0=0 | Inputs: A=0 B=0 C=0 D=0 | Y_gate=0 | Y_dataflow=0 | Y_behavioral=0 | Y_structural=0
-Time=10 | S1=0 S0=0 | Inputs: A=0 B=0 C=0 D=0 | Y_gate=0 | Y_dataflow=0 | Y_behavioral=0 | Y_structural=0
-Time=20 | S1=0 S0=0 | Inputs: A=0 B=0 C=0 D=1 | Y_gate=0 | Y_dataflow=0 | Y_behavioral=0 | Y_structural=0
-Time=30 | S1=0 S0=1 | Inputs: A=0 B=0 C=0 D=1 | Y_gate=0 | Y_dataflow=0 | Y_behavioral=0 | Y_structural=0
-Time=40 | S1=1 S0=0 | Inputs: A=0 B=0 C=0 D=1 | Y_gate=0 | Y_dataflow=0 | Y_behavioral=0 | Y_structural=0
-...
-![image](https://github.com/user-attachments/assets/d870d6a2-ce03-43a1-8376-9acf46f2fb66)
-
-Conclusion:
-
+CONCLUSION:
 In this experiment, a 4:1 Multiplexer was successfully designed and simulated using Verilog HDL across four different modeling styles: Gate-Level, Data Flow, Behavioral, and Structural. The simulation results verified the correct functionality of the MUX, with all implementations producing identical outputs for the given input conditions.
 
 
