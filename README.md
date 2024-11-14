@@ -34,7 +34,8 @@ VERILOG CODE:
 
 4:1 MUX GATE LEVEL IMPLEMENTATION:
 
-module multiplexer(s1,s0,a,b,c,d,y);
+~~~
+ module multiplexer(s1,s0,a,b,c,d,y);
 input s1,s0,a,b,c,d;
 output y;
 wire[3:0]w;
@@ -44,12 +45,15 @@ and g3(w[2],s1,~s0,c);
 and g4(w[3],s1,s0,d);
 or g5(y,w[0],w[1],w[2],w[3]);
 endmodule
+~~~
 
 OUTPUT:
 
 ![image](https://github.com/user-attachments/assets/4315f9cd-1422-4f1e-a9fd-8c0afb94c701)
 
 4:1 MUX DATA FLOW IMPLEMENTATION:
+
+~~~
 
 module mul_data( Y,I0,I1,I2,I3,S0,S1);
 output Y;       
@@ -61,11 +65,14 @@ assign Y = (~S1 & ~S0 & I0) |
            (S1 & S0 & I3);
 endmodule
 
+~~~
+
 OUTPUT:
 
 ![image](https://github.com/user-attachments/assets/9fd618b4-1a5b-4705-9b68-8f861ac66fcd)
 
 4:1 MUX BEHAVIOURAL IMPLEMENTATION:
+~~~
 module mux(s, i, y);
 input [1:0] s;
 input [3:0] i;
@@ -82,12 +89,15 @@ begin
 end
 endmodule
 
+~~~
+
 OUTPUT:
 
 ![image](https://github.com/user-attachments/assets/618c383e-b046-4c26-aac8-c9cd92657106)
 
 4:1 MUX STRUCTURAL IMPLEMENTATION:
 
+~~~
 module mux_4to1 (a,b,c,d,S0,S1,Y);
 input a,b,c,d;
 input  S0, S1;       
@@ -97,43 +107,47 @@ assign Y = (S1 == 0 && S0 == 0) ? a :
 (S1 == 1 && S0 == 0) ? c :
 (S1 == 1 && S0 == 1) ? d:
 endmodule
+~~~
 OUTPUT:
 
 ![image](https://github.com/user-attachments/assets/7b7c4de8-7362-42b5-81ec-91a6e04a3b0b)
 
 TESTBENCH IMPLEMENTATION:
 
+ ~~~
 module multiplexer_tb;
- // Declare inputs as reg and outputs as wire
- reg s1, s0, a, b, c, d;
- wire y;
+  // Declare inputs as reg and outputs as wire
+  reg s1, s0, a, b, c, d;
+  wire y;
 
- // Instantiate the multiplexer module
- multiplexer uut (
-   .s1(s1), 
-   .s0(s0), 
-   .a(a), 
-   .b(b), 
-   .c(c), 
-   .d(d), 
-   .y(y)
- );
+  // Instantiate the multiplexer module
+  multiplexer uut (
+    .s1(s1), 
+    .s0(s0), 
+    .a(a), 
+    .b(b), 
+    .c(c), 
+    .d(d), 
+    .y(y)
+  );
 
- // Test cases
- initial begin
-   // Monitor changes in inputs and output
-   $monitor("s1 = %b, s0 = %b, a = %b, b = %b, c = %b, d = %b, y = %b", s1, s0, a, b, c, d, y);
-   
-   // Apply test vectors
-   s1 = 0; s0 = 0; a = 1; b = 0; c = 0; d = 0; #10;  // Test case 1
-   s1 = 0; s0 = 1; a = 0; b = 1; c = 0; d = 0; #10;  // Test case 2
-   s1 = 1; s0 = 0; a = 0; b = 0; c = 1; d = 0; #10;  // Test case 3
-   s1 = 1; s0 = 1; a = 0; b = 0; c = 0; d = 1; #10;  // Test case 4
-   
-   // Finish simulation
-   $finish;
- end
+  // Test cases
+  initial begin
+    // Monitor changes in inputs and output
+    $monitor("s1 = %b, s0 = %b, a = %b, b = %b, c = %b, d = %b, y = %b", s1, s0, a, b, c, d, y);
+    
+    // Apply test vectors
+    s1 = 0; s0 = 0; a = 1; b = 0; c = 0; d = 0; #10;  // Test case 1
+    s1 = 0; s0 = 1; a = 0; b = 1; c = 0; d = 0; #10;  // Test case 2
+    s1 = 1; s0 = 0; a = 0; b = 0; c = 1; d = 0; #10;  // Test case 3
+    s1 = 1; s0 = 1; a = 0; b = 0; c = 0; d = 1; #10;  // Test case 4
+    
+    // Finish simulation
+    $finish;
+  end
 endmodule
+
+~~~
 
 OUTPUT:
 
